@@ -1,7 +1,3 @@
-ARG path_name = underwriter-microservice/target/*.jar
-
-FROM openjdk:8-jre-alpine3.9
-ARG path_name
-COPY $path_name app.jar
-ENV APP_PORT 8073
-CMD "java" "-jar" "app.jar"
+FROM openjdk:8u312-jre-slim-buster
+COPY ./underwriter-microservice/target/underwriter-microservice-0.1.0.jar app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
